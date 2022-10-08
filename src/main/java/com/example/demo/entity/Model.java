@@ -8,14 +8,20 @@ import java.util.Date;
 public class Model {
     @TableId(type = IdType.AUTO)
     private int id;
+    private String des;
+    private int algorithm;
+    private double param1;
+    private double param2;
+    private double param3;
+    private double param4;
     private String creator;
-    private String algorithm;
     private Date create_time;
     private String data;
     private double accuracy;
-    private double precision;
+    private double prec;
     private double f1;
     private double auc;
+
 
     public int getId() {
         return id;
@@ -23,6 +29,14 @@ public class Model {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
     }
 
     public String getCreator() {
@@ -33,13 +47,43 @@ public class Model {
         this.creator = creator;
     }
 
-    public String getAlgorithm() {
+    public int getAlgorithm() {
         return algorithm;
     }
 
-    public void setAlgorithm(String algorithm) {
+    public void setAlgorithm(int algorithm) {
         this.algorithm = algorithm;
     }
+
+    public double getParam1() {
+        return param1;
+    }
+
+    public void setParam1(double param1) {
+        this.param1 = param1;
+    }
+
+    public double getParam2() {
+        return param2;
+    }
+
+    public void setParam2(double param2) {
+        this.param2 = param2;
+    }
+
+    public double getParam3() {
+        return param3;
+    }
+
+    public void setParam3(double param3) {
+        this.param3 = param3;
+    }
+
+    public double getParam4() {
+        return param4;
+    }
+
+    public void setParam4(double param4) {this.param4 = param4;}
 
     public Date getCreate_time() {
         return create_time;
@@ -65,12 +109,12 @@ public class Model {
         this.accuracy = accuracy;
     }
 
-    public double getPrecision() {
-        return precision;
+    public double getPrec() {
+        return prec;
     }
 
-    public void setPrecision(double precision) {
-        this.precision = precision;
+    public void setPrec(double prec) {
+        this.prec = prec;
     }
 
     public double getF1() {
@@ -94,11 +138,12 @@ public class Model {
         return "Model{" +
                 "id=" + id +
                 ", creator='" + creator + '\'' +
+                ", des='" + des + '\'' +
                 ", algorithm='" + algorithm + '\'' +
                 ", create_time=" + create_time +
                 ", data='" + data + '\'' +
                 ", accuracy=" + accuracy +
-                ", precision=" + precision +
+                ", precision=" + prec +
                 ", f1=" + f1 +
                 ", auc=" + auc +
                 '}';

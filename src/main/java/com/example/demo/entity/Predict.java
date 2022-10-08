@@ -8,9 +8,9 @@ import java.util.Date;
 public class Predict {
     @TableId(type = IdType.AUTO)
     private int id;
-    private int model_id;
+    private int model;
     private String username;
-    private String pre_data;
+    private String data;
     private String result;
     private Date time;
 
@@ -22,12 +22,12 @@ public class Predict {
         this.id = id;
     }
 
-    public int getModel_id() {
-        return model_id;
+    public int getModel() {
+        return model;
     }
 
-    public void setModel_id(int model_id) {
-        this.model_id = model_id;
+    public void setModel(int model) {
+        this.model = model;
     }
 
     public String getUsername() {
@@ -38,12 +38,12 @@ public class Predict {
         this.username = username;
     }
 
-    public String getPre_data() {
-        return pre_data;
+    public String getData() {
+        return data;
     }
 
-    public void setPre_data(String pre_data) {
-        this.pre_data = pre_data;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getResult() {
@@ -66,9 +66,9 @@ public class Predict {
     public String toString() {
         return "Predict{" +
                 "id=" + id +
-                ", model_id=" + model_id +
+                ", model_id=" + model +
                 ", username='" + username + '\'' +
-                ", pre_data='" + pre_data + '\'' +
+                ", pre_data='" + data + '\'' +
                 ", result='" + result + '\'' +
                 ", time=" + time +
                 '}';
