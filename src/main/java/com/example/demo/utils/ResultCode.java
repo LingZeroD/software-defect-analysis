@@ -14,21 +14,21 @@ public class ResultCode {
 
     public String getMsg(Integer code){
         String res = "";
-        if(code==SUCCESS){
+        if(code.equals(SUCCESS)){
             res = "成功";
-        }else if(code==ERROR){
+        }else if(code.equals(ERROR)){
             res = "服务器错误";
-        }else if(code==LOGINERROR){
+        }else if(code.equals(LOGINERROR)){
             res = "用户名或密码错误";
-        }else if(code==INFOERROR){
+        }else if(code.equals(INFOERROR)){
             res = "用户信息不匹配";
-        }else if(code==REGERROR){
+        }else if(code.equals(REGERROR)){
+            res = "用户名已存在";
+        }else if(code.equals(UPDATEERROR)){
             res = "error";
-        }else if(code==UPDATEERROR){
-            res = "error";
-        }else if(code==FILEEMPTY){
+        }else if(code.equals(FILEEMPTY)){
             res = "上传文件为空";
-        }else if(code==FILEERROR){
+        }else if(code.equals(FILEERROR)){
             res = "文件上传失败";
         }
         return res;

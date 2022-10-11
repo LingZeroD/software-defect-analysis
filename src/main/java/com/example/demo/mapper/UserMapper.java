@@ -17,8 +17,6 @@ public interface UserMapper extends BaseMapper<User> {
     User getInfo(@Param("username") String username, @Param("password") String password);
 
 
-//    @Insert("insert into user(username,password,email)values(#{username},#{password},#{email})")
-//    int insert(String username, String password, String email);
 
 ////   查询用户及其所有的订单
 //    @Select("select * from t_user")

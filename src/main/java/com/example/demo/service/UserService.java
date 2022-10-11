@@ -26,7 +26,11 @@ public class UserService {
     }
 
     public int register(User user){
-        return userMapper.insert(user);
+        System.out.println("user"+user);
+        User info = userMapper.selectByName(user.getUsername());
+        if(info==null){
+            return userMapper.insert(user);
+        }else return -1;
     }
 
     public int update(User user){

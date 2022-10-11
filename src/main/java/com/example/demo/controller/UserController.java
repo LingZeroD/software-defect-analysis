@@ -27,7 +27,7 @@ public class UserController {
     // 如果前端传递的数据是json格式，必须使用对象接收，同时需要添加@RequestBody
     public Result login(@RequestBody User user){
         Result res = new Result();
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         System.out.println("username"+user.getUsername()+"password"+user.getPassword());
         try {
             User info = userService.LoginIn(user.getUsername(),user.getPassword());
@@ -37,13 +37,13 @@ public class UserController {
                 res.setMessage("登录成功");
                 res.setData(map);
             }else {
-                res.setCode(resultCode.LOGINERROR);
-                res.setMessage(resultCode.getMsg(resultCode.LOGINERROR));
+                res.setCode(ResultCode.LOGINERROR);
+                res.setMessage(resultCode.getMsg(ResultCode.LOGINERROR));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            res.setCode(resultCode.ERROR);
-            res.setMessage(resultCode.getMsg(resultCode.ERROR));
+            res.setCode(ResultCode.ERROR);
+            res.setMessage(resultCode.getMsg(ResultCode.ERROR));
         }
 
         return res;
@@ -52,7 +52,7 @@ public class UserController {
     @GetMapping("/info")  // "token:xxx"
     public Result info(String token){
         Result res = new Result();
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         try {
             String username = JwtUtils.getClaimsByToken(token).getSubject();
             User user = userService.getInfo(username);
@@ -66,13 +66,13 @@ public class UserController {
                 res.setMessage("返回成功");
                 res.setData(map);
             }else {
-                res.setCode(resultCode.INFOERROR);
-                res.setMessage(resultCode.getMsg(resultCode.INFOERROR));
+                res.setCode(ResultCode.INFOERROR);
+                res.setMessage(resultCode.getMsg(ResultCode.INFOERROR));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            res.setCode(resultCode.ERROR);
-            res.setMessage(resultCode.getMsg(resultCode.ERROR));
+            res.setCode(ResultCode.ERROR);
+            res.setMessage(resultCode.getMsg(ResultCode.ERROR));
         }
         return res;
     }
@@ -88,20 +88,21 @@ public class UserController {
 
     //  用户注册
     @PostMapping("/register")
-    public Result register(User user){
+    public Result register(@RequestBody User user){
+        System.out.println("user"+user);
         Result res = new Result();
         try {
             int r = userService.register(user);
             if(r > 0){
                 res.setMessage("注册成功");
             }else{
-                res.setCode(resultCode.REGERROR);
-                res.setMessage(resultCode.getMsg(resultCode.REGERROR));
+                res.setCode(ResultCode.REGERROR);
+                res.setMessage(resultCode.getMsg(ResultCode.REGERROR));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            res.setCode(resultCode.ERROR);
-            res.setMessage(resultCode.getMsg(resultCode.ERROR));
+            res.setCode(ResultCode.ERROR);
+            res.setMessage(resultCode.getMsg(ResultCode.ERROR));
         }
 
         return res;
@@ -110,20 +111,20 @@ public class UserController {
     // 更新用户信息
     //  插入数据
     @PutMapping("/update")
-    public Result update(User user){
+    public Result update(@RequestBody User user){
         Result res = new Result();
         try {
             int r = userService.update(user);
             if(r > 0){
                 res.setMessage("用户信息更新成功");
             }else{
-                res.setCode(resultCode.UPDATEERROR);
-                res.setMessage(resultCode.getMsg(resultCode.UPDATEERROR));
+                res.setCode(ResultCode.UPDATEERROR);
+                res.setMessage(resultCode.getMsg(ResultCode.UPDATEERROR));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            res.setCode(resultCode.ERROR);
-            res.setMessage(resultCode.getMsg(resultCode.ERROR));
+            res.setCode(ResultCode.ERROR);
+            res.setMessage(resultCode.getMsg(ResultCode.ERROR));
         }
 
         return res;
