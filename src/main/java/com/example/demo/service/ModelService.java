@@ -84,4 +84,8 @@ public class ModelService {
         File dest = new File(rootPathDir.getAbsolutePath()+path);
         return dest;
     }
+
+    public List<Integer> getModelId() {
+        return modelMapper.getModelId();
+    }
 }

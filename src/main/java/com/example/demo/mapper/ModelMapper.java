@@ -37,4 +37,6 @@ public interface ModelMapper extends BaseMapper<Model> {
     })
     List<Model> getModelList(@Param("algorithm") Integer algorithm, @Param("creator") String creator);
 
+    @Select("select id from Model order by id")
+    List<Integer> getModelId();
 }

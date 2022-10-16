@@ -38,6 +38,23 @@ public class ModelController {
         return res;
     }
 
+    @GetMapping("/model")  // "token:xxx"
+    public Result model(){
+        Result res = new Result();
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+            List<Integer> list = modelService.getModelId();
+            map.put("modellist",list);
+            res.setMessage("返回成功");
+            res.setData(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+            res.setCode(resultCode.ERROR);
+            res.setMessage(resultCode.getMsg(resultCode.ERROR));
+        }
+        return res;
+    }
+
     @PostMapping("/train")  // "token:xxx"
     public Result train(Integer algorithm, String des, MultipartFile data, String creator, double param1, double param2){
         Result res = new Result();
