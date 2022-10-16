@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -15,13 +16,13 @@ public class Model {
     private double param3;
     private double param4;
     private String creator;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date create_time;
     private String data;
     private double accuracy;
     private double prec;
     private double f1;
     private double auc;
-
 
     public int getId() {
         return id;
@@ -37,14 +38,6 @@ public class Model {
 
     public void setDes(String des) {
         this.des = des;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
     }
 
     public int getAlgorithm() {
@@ -83,7 +76,17 @@ public class Model {
         return param4;
     }
 
-    public void setParam4(double param4) {this.param4 = param4;}
+    public void setParam4(double param4) {
+        this.param4 = param4;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 
     public Date getCreate_time() {
         return create_time;
@@ -131,21 +134,5 @@ public class Model {
 
     public void setAuc(double auc) {
         this.auc = auc;
-    }
-
-    @Override
-    public String toString() {
-        return "Model{" +
-                "id=" + id +
-                ", creator='" + creator + '\'' +
-                ", des='" + des + '\'' +
-                ", algorithm='" + algorithm + '\'' +
-                ", create_time=" + create_time +
-                ", data='" + data + '\'' +
-                ", accuracy=" + accuracy +
-                ", precision=" + prec +
-                ", f1=" + f1 +
-                ", auc=" + auc +
-                '}';
     }
 }
