@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Predict;
 import com.example.demo.mapper.PredictMapper;
 import com.example.demo.utils.ResultCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,30 +25,38 @@ public class PredictService {
 
     @Resource
     private PredictMapper predictMapper;
+    @Autowired
+    private AsyncService async;
 
 
     public Integer predict(Integer model, String username, MultipartFile pre_data) {
         if (pre_data.isEmpty()) {
             return ResultCode.FILEEMPTY;
         }
-        // 获取文件名
-        String fileName = pre_data.getOriginalFilename();
-        String path = "\\predict\\" + fileName;
-        int size = (int) pre_data.getSize();
-        System.out.println(fileName + "----->" + size);
-        File f = getFile(pre_data, path);
-        path = "\\download"+path;
-        System.out.println("path----->"+path);
-        try {
-            pre_data.transferTo(f);
-            Predict predict = new Predict();
-            predict.setModel(model);
-            predict.setUsername(username);
-            predict.setData(path);
-            Date time=new Date();
+        Predict predict = new Predict();
+        predict.setModel(model);
+        predict.setUsername(username);
+        Date time=new Date();
 //            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            predict.setTime(time);
-            predictMapper.insert(predict);
+        predict.setTime(time);
+        predictMapper.insert(predict);
+
+        //获取预测记录id
+        System.out.println("ID"+predict.getId());
+        int number = predict.getId();
+        try {
+            // 获取文件名
+            String fileName = pre_data.getOriginalFilename();
+            String path = "\\predict\\" + number + fileName;
+            int size = (int) pre_data.getSize();
+            System.out.println(fileName + "----->" + size);
+            File f = getFile(pre_data, path);
+            path = "\\download"+path;
+            predict.setData(path);
+            predictMapper.updateById(predict);
+            pre_data.transferTo(f);
+            System.out.println("path----->"+path);
+            async.predict(predictMapper, predict, path, model);
             return ResultCode.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

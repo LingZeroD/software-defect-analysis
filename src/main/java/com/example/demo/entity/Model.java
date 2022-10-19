@@ -11,18 +11,19 @@ public class Model {
     private int id;
     private String des;
     private int algorithm;
-    private double param1;
-    private double param2;
-    private double param3;
-    private double param4;
+    private int param1;
+    private int param2;
+    private int param3;
+    private int param4;
+    private int state;
     private String creator;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date create_time;
     private String data;
-    private double accuracy;
+    private double acc;
     private double prec;
     private double f1;
-    private double auc;
+    private double rec;
 
     public int getId() {
         return id;
@@ -48,35 +49,35 @@ public class Model {
         this.algorithm = algorithm;
     }
 
-    public double getParam1() {
+    public int getParam1() {
         return param1;
     }
 
-    public void setParam1(double param1) {
+    public void setParam1(int param1) {
         this.param1 = param1;
     }
 
-    public double getParam2() {
+    public int getParam2() {
         return param2;
     }
 
-    public void setParam2(double param2) {
+    public void setParam2(int param2) {
         this.param2 = param2;
     }
 
-    public double getParam3() {
+    public int getParam3() {
         return param3;
     }
 
-    public void setParam3(double param3) {
+    public void setParam3(int param3) {
         this.param3 = param3;
     }
 
-    public double getParam4() {
+    public int getParam4() {
         return param4;
     }
 
-    public void setParam4(double param4) {
+    public void setParam4(int param4) {
         this.param4 = param4;
     }
 
@@ -104,12 +105,12 @@ public class Model {
         this.data = data;
     }
 
-    public double getAccuracy() {
-        return accuracy;
+    public double getAcc() {
+        return acc;
     }
 
-    public void setAccuracy(double accuracy) {
-        this.accuracy = accuracy;
+    public void setAcc(double acc) {
+        this.acc = acc;
     }
 
     public double getPrec() {
@@ -128,11 +129,19 @@ public class Model {
         this.f1 = f1;
     }
 
-    public double getAuc() {
-        return auc;
+    public double getRec() {
+        return rec;
     }
 
-    public void setAuc(double auc) {
-        this.auc = auc;
+    public void setRec(double rec) {
+        this.rec = rec;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

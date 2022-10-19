@@ -56,7 +56,7 @@ public class ModelController {
     }
 
     @PostMapping("/train")  // "token:xxx"
-    public Result train(Integer algorithm, String des, MultipartFile data, String creator, double param1, double param2){
+    public Result train(Integer algorithm, String des, MultipartFile data, String creator, int param1, int param2){
         Result res = new Result();
         try {
             Integer code = modelService.train(algorithm, des, data, creator, param1, param2);
@@ -67,6 +67,12 @@ public class ModelController {
             res.setCode(resultCode.ERROR);
             res.setMessage(resultCode.getMsg(resultCode.ERROR));
         }
+        return res;
+    }
+
+    @GetMapping("/test")  // "token:xxx"
+    public int test(){
+        int res = modelService.test();
         return res;
     }
 }

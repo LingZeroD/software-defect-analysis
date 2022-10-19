@@ -20,7 +20,7 @@ public class PredictController {
     ResultCode resultCode = new ResultCode();
 
     @PostMapping("/predict")  // "token:xxx"
-    public Result train(Integer model, String username, MultipartFile pre_data){
+    public Result predict(Integer model, String username, MultipartFile pre_data){
         Result res = new Result();
         try {
             Integer code = predictService.predict(model,username,pre_data);

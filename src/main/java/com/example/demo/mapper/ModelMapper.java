@@ -37,6 +37,9 @@ public interface ModelMapper extends BaseMapper<Model> {
     })
     List<Model> getModelList(@Param("algorithm") Integer algorithm, @Param("creator") String creator);
 
+    @Select("SELECT auto_increment FROM information_schema.`TABLES` WHERE TABLE_SCHEMA='mydb' AND TABLE_NAME='model'")
+    Integer getId();
+
     @Select("select id from Model order by id")
     List<Integer> getModelId();
 }
