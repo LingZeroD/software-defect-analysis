@@ -70,9 +70,4 @@ public class ModelController {
         return res;
     }
 
-    @GetMapping("/test")  // "token:xxx"
-    public int test(){
-        int res = modelService.test();
-        return res;
-    }
 }

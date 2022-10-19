@@ -36,6 +36,7 @@ public class ModelService {
                 String path = System.getProperty("user.dir")+m.getData();
                 byte[] b = Files.readAllBytes(Paths.get(path));
                 String data = Base64.getEncoder().encodeToString(b);
+                if(m.getAlgorithm()==1)m.setParam1(m.getParam3());
                 m.setData(data);
             }
         } catch (IOException e) {
