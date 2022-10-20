@@ -10,7 +10,7 @@ public class ResultCode {
     public static Integer UPDATEERROR = 104; //更新失败
     public static Integer FILEEMPTY=105;//文件为空
     public static Integer FILEERROR =106;//文件上传失败
-    public static Integer REPERROR =107;//重复操作
+    public static Integer FILEFORMATEERROR =107;//重复操作
 
     public String getMsg(Integer code){
         String res = "";
@@ -30,6 +30,8 @@ public class ResultCode {
             res = "上传文件为空";
         }else if(code.equals(FILEERROR)){
             res = "文件上传失败";
+        }else if(code.equals(FILEFORMATEERROR)){
+            res = "文件格式错误";
         }
         return res;
     }

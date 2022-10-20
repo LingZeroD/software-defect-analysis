@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -12,6 +13,8 @@ public class Predict {
     private String username;
     private String data;
     private String result;
+    private int state;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date time;
 
     public int getId() {
@@ -72,5 +75,13 @@ public class Predict {
                 ", result='" + result + '\'' +
                 ", time=" + time +
                 '}';
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }
