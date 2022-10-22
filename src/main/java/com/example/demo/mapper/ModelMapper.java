@@ -29,11 +29,12 @@ public interface ModelMapper extends BaseMapper<Model> {
             @Result(column = "param4",property = "param4"),
             @Result(column = "creator",property = "creator"),
             @Result(column = "create_time",property = "create_time"),
+            @Result(column = "finish_time",property = "finish_time"),
             @Result(column = "data",property = "data"),
-            @Result(column = "accuracy",property = "accuracy"),
+            @Result(column = "acc",property = "acc"),
             @Result(column = "prec",property = "prec"),
             @Result(column = "f1",property = "f1"),
-            @Result(column = "auc",property = "auc")
+            @Result(column = "rec",property = "rec")
     })
     List<Model> getModelList(@Param("algorithm") Integer algorithm, @Param("creator") String creator);
 

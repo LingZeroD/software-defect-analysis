@@ -16,6 +16,8 @@ public class Predict {
     private int state;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date time;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date finish;
 
     public int getId() {
         return id;
@@ -83,5 +85,14 @@ public class Predict {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+
+    public Date getFinish() {
+        return finish;
+    }
+
+    public void setFinish(Date finish) {
+        this.finish = finish;
     }
 }

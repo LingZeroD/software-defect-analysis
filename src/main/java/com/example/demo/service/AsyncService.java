@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.*;
+import java.util.Date;
 
 @Component
 public class AsyncService {
@@ -55,6 +56,8 @@ public class AsyncService {
                 out2.close();
                 predict.setResult(res);
                 predict.setState(1);
+                Date time=new Date();
+                predict.setFinish(time);
                 predictMapper.updateById(predict);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
