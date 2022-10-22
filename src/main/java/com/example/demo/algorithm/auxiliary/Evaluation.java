@@ -8,6 +8,7 @@ import com.example.demo.utils.ResultCode;
 
 import javax.annotation.Resource;
 import java.io.*;
+import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -224,6 +225,8 @@ public class Evaluation {
             model.setRec(recall);
             model.setF1(F1);
             model.setState(1);
+            Date time=new Date();
+            model.setFinish_time(time);
             modelMapper.updateById(model);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(Evaluation.class.getName()).log(Level.SEVERE, null, ex);

@@ -19,6 +19,8 @@ public class Model {
     private String creator;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date create_time;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date finish_time;
     private String data;
     private double acc;
     private double prec;
@@ -143,5 +145,13 @@ public class Model {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public Date getFinish_time() {
+        return finish_time;
+    }
+
+    public void setFinish_time(Date finish_time) {
+        this.finish_time = finish_time;
     }
 }
