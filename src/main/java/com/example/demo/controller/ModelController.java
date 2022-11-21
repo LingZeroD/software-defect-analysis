@@ -69,5 +69,4 @@ public class ModelController {
         }
         return res;
     }
-
 }

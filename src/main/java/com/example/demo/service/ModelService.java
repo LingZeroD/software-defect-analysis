@@ -22,7 +22,7 @@ import java.util.List;
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class ModelService {
 
-    @Resource
+    @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
@@ -123,10 +123,5 @@ public class ModelService {
 
     public List<Integer> getModelId() {
         return modelMapper.getModelId();
-    }
-
-
-    public Integer test() {
-        return modelMapper.getId();
     }
 }

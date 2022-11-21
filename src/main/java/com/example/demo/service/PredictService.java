@@ -23,7 +23,7 @@ import java.util.List;
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class PredictService {
 
-    @Resource
+    @Autowired
     private PredictMapper predictMapper;
     @Autowired
     private AsyncService async;
