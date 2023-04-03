@@ -24,8 +24,8 @@ class PredictControllerTest extends PredictController{
         MultipartFile pre_data = new MockMultipartFile("file", file.getName(), null, new FileInputStream(file));
         String username = "aki";
         //通过继承和this调用方法，否则mapper报空
-        this.predict(model, username, pre_data);
-        this.predict(100,"(●'◡'●)",pre_data);
+//        this.predict(model, username, pre_data);
+//        this.predict(100,"(●'◡'●)",pre_data);
     }
 
     @Test

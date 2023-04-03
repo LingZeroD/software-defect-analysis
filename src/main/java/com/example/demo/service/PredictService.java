@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.controller.form.PredictWithinParams;
 import com.example.demo.entity.Predict;
 import com.example.demo.mapper.PredictMapper;
 import com.example.demo.utils.ResultCode;
@@ -9,7 +10,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,7 +29,7 @@ public class PredictService {
     private AsyncService async;
 
 
-    public Integer predict(Integer model, String username, MultipartFile pre_data) {
+    public Integer predict(Integer model, String username, MultipartFile pre_data, PredictWithinParams predictWithinParams) {
         if (pre_data.isEmpty()) {
             return ResultCode.FILEEMPTY;
         }
@@ -57,6 +57,7 @@ public class PredictService {
             pre_data.transferTo(f);
             System.out.println("path----->"+path);
             async.predict(predictMapper, predict, path, model);
+//            async.predictModelWithin(predictWithinMapper, predictWithin, username,predictWithinParams);
             return ResultCode.SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();

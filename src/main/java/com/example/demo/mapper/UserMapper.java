@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.*;
 public interface UserMapper extends BaseMapper<User> {
 
     //根据token查询信息   select * from user where username =
-    @Select("select * from User where username = #{username}")
+    @Select("select * from user where username = #{username}")
     User selectByName(String username);
 
     @Select("SELECT * FROM user WHERE username = #{username} AND password = #{password}")

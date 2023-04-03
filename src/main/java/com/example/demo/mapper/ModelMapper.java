@@ -41,6 +41,6 @@ public interface ModelMapper extends BaseMapper<Model> {
     @Select("SELECT auto_increment FROM information_schema.`TABLES` WHERE TABLE_SCHEMA='mydb' AND TABLE_NAME='model'")
     Integer getId();
 
-    @Select("select id from Model order by id")
+    @Select("select id from model order by id")
     List<Integer> getModelId();
 }

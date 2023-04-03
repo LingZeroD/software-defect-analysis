@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: demo
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  web:
+    resources:
+      static-locations: /upload/
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true # 开启隐藏方法过滤器
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://ali.lingzero.cn:3306/defect01?useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: defect01
+    password: defect01
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+  port: 8080
